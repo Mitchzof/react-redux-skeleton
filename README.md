@@ -8,6 +8,8 @@ Skeleton built with react, redux, and express.
 
 The src/client/components directory will be where the ui is built, and src/store contains anything related to redux.
 
+Preloading for routes is done within the routes file.  Just add a "loadData" element to the route that returns a promise.  Then promise will be handled by the server, and whatever pre-loaded data will be put in the store under "data".
+
 ## What This Is
 This is really just a skeleton I'm using for my web projects, though I figured I'd share it for friends
 and anyone else interested.
