@@ -4,13 +4,17 @@ import {
   reducer, createStore, Provider, matchPath, App, bodyParser, http, https
 } from './imports';
 
+import config from './config';
+
 //Server initialization
 const server = express();
+
+console.log(process.env.NODE_ENV);
 
 server.use(bodyParser.json());
 server.use(express.static('dist/public'));
 
-if (process.env.PRODUCTION) {
+if (process.env.NODE_ENV === 'production') {
   server.use ((req, res, next) => {
     (req.secure) ? next() : res.redirect('https://' + req.headers.host + req.url);
   });
@@ -18,28 +22,24 @@ if (process.env.PRODUCTION) {
 
 //Listen to all incoming get requests
 server.get('*', (req, res) => {
-  const promises = [];
+  console.log(req.url);
+  let promise = new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      resolve([]);
+    }, 250);
+  });
 
-  //Call preloading functions matched to the route
   routes.some(route => {
     const match = matchPath(req.path, route);
     if (match) {
       if (route.loadData) {
-        promises.push(route.loadData());
-      }
-      else {
-        const defaultPromise = new Promise(function(resolve, reject) {
-          setTimeout(function() {
-            resolve([]);
-          }, 250);
-        })
-        promises.push(defaultPromise);
+        promise = route.loadData();
       }
     }
     return match;
   });
 
-  Promise.all(promises).then(data => {
+  promise.then(data => {
     let context = {};
 
     //Create store and set initial state/preloaded data
@@ -55,6 +55,8 @@ server.get('*', (req, res) => {
       </Provider>
     );
 
+    console.log(content);
+
     const state = store.getState();
 
     res.send(
@@ -64,9 +66,9 @@ server.get('*', (req, res) => {
 });
 
 var httpServer = http.createServer(server);
-httpServer.listen(process.env.PORT || 3000);
+httpServer.listen((process.env.NODE_ENV === 'production') ? 80 : 3000);
 
-if (process.env.PRODUCTION) {
+if (process.env.NODE_ENV === 'production') {
   var httpsServer = https.createServer({
       key: privateKey,
       cert: certificate

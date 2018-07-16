@@ -5,4 +5,4 @@ const requireDir = require('require-dir');
 
 requireDir('./tools', {recurse: false});
 
-gulp.task('default', ['build:client', 'build:server', 'copy:js', 'watch:scss']);
+gulp.task('default', ['build:client', 'build:server', 'watch:scss', 'watch:scripts']);

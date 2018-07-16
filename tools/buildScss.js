@@ -7,8 +7,8 @@ const clean = require('gulp-clean-css');
 let ROOT = '../'
 
 let dest = path.resolve(__dirname, ROOT, 'dist/public/css');
-let entry = path.resolve(__dirname, ROOT, 'src/scss/materialize.scss');
-let watch_path = path.resolve(__dirname, ROOT, 'src/scss/**/*.scss');
+let entry = path.resolve(__dirname, ROOT, 'src/assets/scss/bootstrap.scss');
+let watchPath = path.resolve(__dirname, ROOT, 'src/assets/scss/**/*.scss');
 
 gulp.task('build:scss', function () {
   return gulp.src(entry)
@@ -18,5 +18,5 @@ gulp.task('build:scss', function () {
 });
 
 gulp.task('watch:scss', function () {
-  gulp.watch(watch_path, ['build:scss']);
+  gulp.watch(watchPath, ['build:scss']);
 });
