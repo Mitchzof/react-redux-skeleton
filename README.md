@@ -20,3 +20,7 @@ of the assets folder.
 ## What This Isn't
 This is by no means for anyone to just use out of the box.  This is just a structure I'm using and improving upon for
 my react-redux based SSR web projects.  That said it's here if anyone is interested.
+
+## Notes
+Config is just for basic sensitive data.
+I will never actually use that key.
