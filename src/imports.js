@@ -19,6 +19,8 @@ import { matchPath } from 'react-router-dom';
 import App from './client/App';
 import bodyParser from 'body-parser'; */
 
+//Import management.  Prevents server file from getting too cluttered
+
 export { default as express } from 'express';
 export { default as React } from 'react';
 export { renderToString } from 'react-dom/server';

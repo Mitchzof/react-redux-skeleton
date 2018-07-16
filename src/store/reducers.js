@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { preload } from './actions';
 
+//Reducer for preloading
 const dataReducer = (state = {}, action) => {
   switch(action.type) {
     case "PRELOAD_DATA":
@@ -9,6 +10,7 @@ const dataReducer = (state = {}, action) => {
   }
 }
 
+//Combines all reducers
 const reducer = combineReducers({
   data: dataReducer
 });

@@ -1,5 +1,10 @@
 import React from 'react';
 
+/*
+  Only loaded by server, but contains all basic page elements.
+  Add stylesheets/scripts here.
+*/
+
 const Template = function (body, state) {
   return `
   <!DOCTYPE html>

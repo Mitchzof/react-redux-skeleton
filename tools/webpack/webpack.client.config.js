@@ -1,6 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
 
+//Change process.env to production when going live.
+//TODO: Make dev/production environment selection more efficient
+
 var client = {
   entry: './src/client/client.js',
   watch: true,

@@ -1,5 +1,8 @@
-//loadData serves as the page's preloading function
-//Should return a Promise
+/*
+  loadData serves as the page's preloading function
+  Should return a Promise
+*/
+
 import Home from './components/Home'
 
 const routes = [

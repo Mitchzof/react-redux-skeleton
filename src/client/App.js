@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import routes from './routes';
 
+//Render app based on current route
 class App extends Component {
   render() {
     return (
